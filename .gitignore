@@ -1,1 +1,14 @@
-.DS_Stor
+.postgres_data
+
+.env
+.env.*
+
+.idea
+
+client/.vscode
+.vite
+
+*.local
+
+.DS_Store
+
