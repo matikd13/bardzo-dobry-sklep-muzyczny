@@ -1,4 +1,4 @@
-@startuml
+@startuml loginSeq
 User -> React : Login button
 React -> User : Auth0 login screen
 User -> Auth0 : Credentials
