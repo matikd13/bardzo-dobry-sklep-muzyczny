@@ -3,7 +3,7 @@ left to right direction
 actor Klient as client
 actor "Obsługa sklepu" as seller
 
-rectangle SklepMuzyczny {
+rectangle "Bardzo Dobry Sklep Muzyczny" {
     client -- (Przeglądanie produktów) 
     client -- (Kupno produktu) : Realizacja płatności
     client -- (Wyszukiwanie produktu) 
