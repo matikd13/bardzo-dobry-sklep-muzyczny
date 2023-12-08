@@ -3,7 +3,7 @@ version: "3.9"
 services:
 
   db:
-    image: postgres:14.1
+    image: postgres:16.1
     volumes:
       - ./.postgres_data:/var/lib/postgresql/data
     environment:
@@ -17,8 +17,3 @@ services:
     image: redis
     ports:
     - 6379:6379
-
-  gotenberg:
-    image: gotenberg/gotenberg
-    ports:
-      - 3123:3000

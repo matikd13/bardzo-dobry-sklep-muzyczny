@@ -1,0 +1,68 @@
+.postgres_data
+.python-version
+.hasura.sand.env
+.hasura.prod.env
+
+media/*
+staticfiles/*
+public/*
+.idea/*
+.DS_Store
+.envrc
+.vscode
+scripts/prod_migrations/
+
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Serverless directories
+s_*
+serverless_sdk
+.serverless
+.requirements
+node_modules/*
+/environments/local.yml
+/environments/test.local.yml
+/flags_local.yml
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+.commit
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+media/
+staticfiles/
+
+# celery beat schedule file
+celerybeat-schedule
+celerybeat-schedule.db
+
+# Environments
+.env
+.venv
+venv/
+ENV/
+env.bak/
+venv.bak/
+.sandbox.env
+.staging.env
