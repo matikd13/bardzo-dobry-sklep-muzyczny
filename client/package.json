@@ -7,7 +7,8 @@
     "start": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate": "env $(cat .env | sed '/#/d' | xargs) graphql-codegen --config codegen.js"
   },
   "dependencies": {
     "@apollo/client": "^3.8.8",
@@ -20,6 +21,12 @@
     "react-router-dom": "^6.20.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-react-apollo": "^4.1.0",
+    "@graphql-typed-document-node/core": "^3.2.0",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
@@ -37,9 +44,10 @@
     "eslint-plugin-tailwindcss": "^3.13.0",
     "postcss": "^8.4.32",
     "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.9",
     "sass": "^1.69.5",
     "tailwindcss": "^3.3.6",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.3",
     "vite": "^5.0.0"
   }
 }

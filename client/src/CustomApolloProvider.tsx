@@ -4,7 +4,7 @@ import { PropsWithChildren, useMemo } from 'react';
 export default function CustomApolloProvider({ children }: PropsWithChildren) {
   const client = useMemo(() => {
     return new ApolloClient({
-      uri: 'https://flyby-router-demo.herokuapp.com/',
+      uri: import.meta.env.VITE_GQL_URI,
       cache: new InMemoryCache(),
     });
   }, []);

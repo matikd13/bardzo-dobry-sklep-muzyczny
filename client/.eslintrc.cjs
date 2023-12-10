@@ -4,6 +4,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  ignorePatterns: ['build/**', 'src/generated/**', 'codegen.js', '.eslintrc.cjs'],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended-type-checked',
@@ -25,7 +26,6 @@ module.exports = {
     project: './tsconfig.json',
   },
 
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   plugins: ['react', '@typescript-eslint', 'prettier', 'import'],
   settings: {
