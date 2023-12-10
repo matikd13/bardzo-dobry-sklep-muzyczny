@@ -1,10 +1,12 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import { PropsWithChildren, useMemo } from 'react';
 
+const GQL_URI = import.meta.env.VITE_GQL_URI;
+
 export default function CustomApolloProvider({ children }: PropsWithChildren) {
   const client = useMemo(() => {
     return new ApolloClient({
-      uri: 'https://flyby-router-demo.herokuapp.com/',
+      uri: GQL_URI,
       cache: new InMemoryCache(),
     });
   }, []);

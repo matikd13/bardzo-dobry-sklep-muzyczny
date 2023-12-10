@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import TestPage from './TestPage';
 
 export interface AppRouteType {
   path: string;
@@ -13,6 +14,10 @@ function getRoutes() {
       path: '',
       element: <Button variant="contained">Test</Button>, //TODO: make page layout
       children: [],
+    },
+    {
+      path: 'test',
+      element: <TestPage />,
     },
     {
       path: '*',
