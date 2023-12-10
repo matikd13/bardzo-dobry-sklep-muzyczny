@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 export interface AppRouteType {
@@ -10,7 +11,7 @@ function getRoutes() {
   return [
     {
       path: '',
-      element: <>SIEMA</>, //TODO: make page layout
+      element: <Button variant="contained">Test</Button>, //TODO: make page layout
       children: [],
     },
     {
