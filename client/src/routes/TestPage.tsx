@@ -1,7 +1,8 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql } from '@apollo/client';
+import { useTestPageQuery } from '@generated/graphql';
 
-const GET_USERS = gql`
-  query Users {
+gql`
+  query TestPage {
     users {
       email
       isActive
@@ -10,11 +11,10 @@ const GET_USERS = gql`
 `;
 
 export default function TestPage() {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-  const { loading, error, data } = useQuery(GET_USERS);
+  const { loading, error, data } = useTestPageQuery({ context: {} });
 
   if (loading) return <>Wait</>;
   if (error) return <>Error</>;
 
-  return <>{data.users[0].email}</>;
+  return <>{data?.users.map((user) => user.email)}</>;
 }

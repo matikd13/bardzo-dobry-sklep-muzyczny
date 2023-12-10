@@ -28,14 +28,14 @@ export type User = {
   isActive: Scalars['Boolean']['output'];
 };
 
-export type UsersQueryVariables = Exact<{ [key: string]: never; }>;
+export type TestPageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type UsersQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', email: string, isActive: boolean }> };
+export type TestPageQuery = { __typename?: 'Query', users: Array<{ __typename?: 'User', email: string, isActive: boolean }> };
 
 
-export const UsersDocument = gql`
-    query Users {
+export const TestPageDocument = gql`
+    query TestPage {
   users {
     email
     isActive
@@ -44,33 +44,33 @@ export const UsersDocument = gql`
     `;
 
 /**
- * __useUsersQuery__
+ * __useTestPageQuery__
  *
- * To run a query within a React component, call `useUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * To run a query within a React component, call `useTestPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTestPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
  *
  * @example
- * const { data, loading, error } = useUsersQuery({
+ * const { data, loading, error } = useTestPageQuery({
  *   variables: {
  *   },
  * });
  */
-export function useUsersQuery(baseOptions?: Apollo.QueryHookOptions<UsersQuery, UsersQueryVariables>) {
+export function useTestPageQuery(baseOptions?: Apollo.QueryHookOptions<TestPageQuery, TestPageQueryVariables>) {
         const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<UsersQuery, UsersQueryVariables>(UsersDocument, options);
+        return Apollo.useQuery<TestPageQuery, TestPageQueryVariables>(TestPageDocument, options);
       }
-export function useUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UsersQuery, UsersQueryVariables>) {
+export function useTestPageLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<TestPageQuery, TestPageQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<UsersQuery, UsersQueryVariables>(UsersDocument, options);
+          return Apollo.useLazyQuery<TestPageQuery, TestPageQueryVariables>(TestPageDocument, options);
         }
-export function useUsersSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<UsersQuery, UsersQueryVariables>) {
+export function useTestPageSuspenseQuery(baseOptions?: Apollo.SuspenseQueryHookOptions<TestPageQuery, TestPageQueryVariables>) {
           const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useSuspenseQuery<UsersQuery, UsersQueryVariables>(UsersDocument, options);
+          return Apollo.useSuspenseQuery<TestPageQuery, TestPageQueryVariables>(TestPageDocument, options);
         }
-export type UsersQueryHookResult = ReturnType<typeof useUsersQuery>;
-export type UsersLazyQueryHookResult = ReturnType<typeof useUsersLazyQuery>;
-export type UsersSuspenseQueryHookResult = ReturnType<typeof useUsersSuspenseQuery>;
-export type UsersQueryResult = Apollo.QueryResult<UsersQuery, UsersQueryVariables>;
+export type TestPageQueryHookResult = ReturnType<typeof useTestPageQuery>;
+export type TestPageLazyQueryHookResult = ReturnType<typeof useTestPageLazyQuery>;
+export type TestPageSuspenseQueryHookResult = ReturnType<typeof useTestPageSuspenseQuery>;
+export type TestPageQueryResult = Apollo.QueryResult<TestPageQuery, TestPageQueryVariables>;
