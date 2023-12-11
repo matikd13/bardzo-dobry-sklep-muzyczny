@@ -20,6 +20,7 @@ export type Scalars = {
 export type Query = {
   __typename?: 'Query';
   users: Array<User>;
+  users2: Array<User>;
 };
 
 export type User = {

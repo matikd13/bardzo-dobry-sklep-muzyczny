@@ -35,20 +35,15 @@ const LogoutButton = () => {
 
 export default function TestPage() {
   const { loading, error, data } = useTestPageQuery({ context: {} });
-  const { user, isLoading, getAccessTokenSilently } = useAuth0();
+  const { user } = useAuth0();
 
-  if (loading || isLoading) return <>Wait</>;
+  if (loading) return <>Wait</>;
   if (error) return <>Error</>;
-
-  async function getToken() {
-    console.log(await getAccessTokenSilently());
-  }
 
   return (
     <>
       {data?.users.map((user) => <p key={user.email}>{user.email}</p>)}
       {user?.email}
-      <Button onClick={() => getToken()}>Token</Button>
       <LoginButton />
       <LogoutButton />
     </>

@@ -1,13 +1,13 @@
 import AppRouter from './routes/AppRouter';
-import CustomApolloProvider from './Providers/CustomApolloProvider';
-import AuthProvider from './Providers/AuthProvider';
+import CustomApolloProvider from './utils/CustomApolloProvider';
+import CustomAuth0Provider from './utils/auth/CustomAuth0Provider';
 
 export default function App() {
   return (
-    <AuthProvider>
+    <CustomAuth0Provider>
       <CustomApolloProvider>
         <AppRouter />
       </CustomApolloProvider>
-    </AuthProvider>
+    </CustomAuth0Provider>
   );
 }
