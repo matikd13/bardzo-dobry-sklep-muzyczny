@@ -26,7 +26,7 @@ function getRoutes() {
     },
     {
       path: 'home',
-      element: <HomePage></HomePage>,
+      element: <HomePage />,
     },
   ];
 }
