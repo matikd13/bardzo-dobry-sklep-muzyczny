@@ -1,19 +1,18 @@
-import { Button } from '@mui/material';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Link, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import TestPage from './TestPage';
 import HomePage from './HomePage';
 
-export interface AppRouteType {
+export type AppRouteType = {
   path: string;
   element?: JSX.Element;
   children?: AppRouteType[];
-}
+};
 
 function getRoutes() {
   return [
     {
       path: '',
-      element: <Button variant="contained">Test</Button>, //TODO: make page layout
+      element: <Link to="test">Test</Link>, //TODO: make page layout
       children: [],
     },
     {

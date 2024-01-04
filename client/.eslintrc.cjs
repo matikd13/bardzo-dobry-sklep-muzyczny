@@ -37,9 +37,6 @@ module.exports = {
     },
   },
   rules: {
-    '@typescript-eslint/no-explicit-any': 'off',
-    'prettier/prettier': 'warn',
-    'react/display-name': 'off',
     '@typescript-eslint/no-unused-vars': ['warn', { varsIgnorePattern: '^_', argsIgnorePattern: '^_' }],
     eqeqeq: 1,
     'object-shorthand': 'warn',
@@ -48,5 +45,10 @@ module.exports = {
     'react/jsx-curly-brace-presence': 'error',
     'react/jsx-boolean-value': 'error',
     'import/order': 'warn',
+    curly: ['warn', 'multi-or-nest', 'consistent'],
+    'no-use-before-define': 'warn',
+    '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
+    '@typescript-eslint/no-non-null-assertion': 'warn',
+    '@typescript-eslint/no-misused-promises': 'off',
   },
 };
