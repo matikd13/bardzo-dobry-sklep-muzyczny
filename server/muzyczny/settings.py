@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'muzyczny.utils.auth_middleware.AuthMiddleware',
 ]
 
 ROOT_URLCONF = 'muzyczny.urls'
@@ -88,6 +89,8 @@ DATABASES = {
 }
 
 AUTH_USER_MODEL = 'accounts.User'
+
+AUTH0_DOMAIN = config('AUTH0_DOMAIN')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
