@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import TestPage from './TestPage';
+import HomePage from './HomePage';
 
 export interface AppRouteType {
   path: string;
@@ -22,6 +23,10 @@ function getRoutes() {
     {
       path: '*',
       element: <>404</>, //TODO: make fallback page
+    },
+    {
+      path: 'home',
+      element: <HomePage></HomePage>,
     },
   ];
 }
