@@ -1,6 +1,6 @@
-import { Link, RouterProvider, createBrowserRouter } from 'react-router-dom';
-import TestPage from './TestPage';
-import HomePage from './HomePage';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Layout from './layouts/Layout';
+import HomePage from './homepage/HomePage';
 
 export type AppRouteType = {
   path: string;
@@ -12,20 +12,17 @@ function getRoutes() {
   return [
     {
       path: '',
-      element: <Link to="test">Test</Link>, //TODO: make page layout
-      children: [],
-    },
-    {
-      path: 'test',
-      element: <TestPage />,
+      element: <Layout />, //TODO: make page layout
+      children: [
+        {
+          path: '',
+          element: <HomePage />,
+        },
+      ],
     },
     {
       path: '*',
       element: <>404</>, //TODO: make fallback page
-    },
-    {
-      path: 'home',
-      element: <HomePage />,
     },
   ];
 }
