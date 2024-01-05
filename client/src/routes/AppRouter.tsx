@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './layouts/Layout';
 import HomePage from './homepage/HomePage';
+import SearchPage from './searchpage/SearchPage';
 
 export type AppRouteType = {
   path: string;
@@ -17,6 +18,10 @@ function getRoutes() {
         {
           path: '',
           element: <HomePage />,
+        },
+        {
+          path: 'search',
+          element: <SearchPage />,
         },
       ],
     },

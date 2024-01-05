@@ -1,41 +1,67 @@
+import { Grid, Box } from '@mui/material';
+
 export default function Footer() {
   return (
     <>
-      <div className="">
-        <footer className="absolute inset-x-0 bottom-0 rounded-t bg-blue-950 px-20 py-12 text-blue-50">
-          <div className="flex w-screen">
-            <div className="w-1/3">
-              <p className="pb-2 text-2xl underline decoration-sky-100">Bardzo dobry sklep muzyczny</p>
-            </div>
-            <div className="w-1/3">
-              <p className="pb-2 text-2xl underline decoration-sky-100">Contact Info:</p>
-              <div>
-                <ul className="text-lg">
-                  <li className="mt-1">
-                    <a className="pr-2 text-gray-200">Michał:</a>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Github</a>
-                  </li>
-                  <li className="mt-1">
-                    <a className="pr-2 text-gray-200">Natalia</a>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Github</a>
-                  </li>
-                  <li className="mt-1">
-                    <a className="pr-2 text-gray-200">Mateusz</a>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Github</a>
-                  </li>
-                  <li className="mt-1">
-                    <a className="pr-2 text-gray-200">Kuba</a>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Github</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="w-1/3">
-              <p className="pb-2 text-2xl underline decoration-sky-100">Wersja beta 1.0</p>
-            </div>
-          </div>
-        </footer>
-      </div>
+      <Box className="absolute inset-x-0 bottom-0 rounded-t bg-blue-950 px-10 py-6 text-blue-50">
+        <Grid container spacing={2} direction="row" justifyContent="space evenly" alignItems="center">
+          <Grid item xs={4} className="text-center font-serif text-2xl font-bold">
+            Bardzo Dobry Sklep MuzycznyTM
+          </Grid>
+          <Grid item xs={2}>
+            <table className="text-center">
+              <p className="text-xl font-bold">Kontakt:</p>
+              <tr>
+                <th className="text-left">Michał</th>
+                <th>
+                  <a
+                    href="https://www.youtube.com/watch?v=wh9QLjk3M2k"
+                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                  >
+                    Github
+                  </a>
+                </th>
+              </tr>
+              <tr>
+                <th className="text-left">Natalia</th>
+                <th>
+                  <a
+                    href="https://www.youtube.com/watch?v=wh9QLjk3M2k"
+                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                  >
+                    Github
+                  </a>
+                </th>
+              </tr>
+              <tr>
+                <th className="text-left">Mateusz</th>
+                <th>
+                  <a
+                    href="https://www.youtube.com/watch?v=wh9QLjk3M2k"
+                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                  >
+                    Github
+                  </a>
+                </th>
+              </tr>
+              <tr>
+                <th className="text-left">Kuba</th>
+                <th>
+                  <a
+                    href="https://www.youtube.com/watch?v=wh9QLjk3M2k"
+                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
+                  >
+                    Github
+                  </a>
+                </th>
+              </tr>
+            </table>
+          </Grid>
+          <Grid item xs={6} className="text-center font-serif text-2xl font-bold">
+            Wersja systemu: Beta 0.01
+          </Grid>
+        </Grid>
+      </Box>
     </>
   );
 }

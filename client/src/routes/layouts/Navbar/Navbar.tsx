@@ -1,32 +1,40 @@
-import { Button } from '@mui/material';
+import { Button, Grid, Box } from '@mui/material';
 
 export default function Navbar() {
   return (
     <>
-      <div className="inset-x-0 top-0">
-        <nav className=" rounded-b bg-blue-950 px-20 py-14 text-blue-50">
-          <div className="flex justify-evenly">
-            <Button variant="contained">Lista</Button>
+      <div>
+        <Box className="inset-x-0 top-0 bg-blue-950 px-10 py-8 text-blue-50" sx={{ width: '100%' }}>
+          <Grid container direction="row" alignItems="center" justifyContent="space-evenly">
+            <Grid>
+              <Button className="bg-sky-500" variant="contained" size="large">
+                Menu
+              </Button>
+            </Grid>
 
-            <Button variant="contained">Search</Button>
+            <Grid>
+              <Button className="bg-sky-500" variant="contained" size="large">
+                Szukaj
+              </Button>
+            </Grid>
 
-            <div className="px-24">
-              <div className="rounded">
-                <p className="text-2xl">Bardzo Dobry Sklep Muzyczny</p>
-              </div>
-            </div>
-            <div className="px-8">
-              <div className="rounded bg-sky-400">
-                <button>PROFILE</button>
-              </div>
-            </div>
-            <div className="px-8">
-              <div className="rounded bg-sky-400">
-                <button>CART</button>
-              </div>
-            </div>
-          </div>
-        </nav>
+            <Grid xs={5}>
+              <p className="text-center font-serif text-xl">BARDZO DOBRY SKLEP MUZYCZNY</p>
+            </Grid>
+
+            <Grid>
+              <Button className="bg-sky-500" variant="contained" size="large">
+                Profil
+              </Button>
+            </Grid>
+
+            <Grid>
+              <Button className="bg-sky-500" variant="contained" size="large">
+                Koszyk
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
       </div>
     </>
   );
