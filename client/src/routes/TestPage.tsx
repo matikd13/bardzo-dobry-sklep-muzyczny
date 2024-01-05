@@ -34,7 +34,7 @@ const LogoutButton = () => {
 };
 
 export default function TestPage() {
-  const { loading, error, data } = useTestPageQuery({ context: {} });
+  const { loading, error, data } = useTestPageQuery();
   const { user } = useAuth0();
 
   if (loading) return <>Wait</>;

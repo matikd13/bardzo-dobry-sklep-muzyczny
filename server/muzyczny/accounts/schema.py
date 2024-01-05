@@ -8,4 +8,3 @@ from .types import User
 @strawberry.type
 class Query:
     users: list[User] = strawberry_django.field(extensions=[IsAuthenticated()])
-    users2: list[User] = strawberry_django.field()
