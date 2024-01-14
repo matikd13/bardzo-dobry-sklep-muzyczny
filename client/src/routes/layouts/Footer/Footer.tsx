@@ -1,10 +1,10 @@
-import { Grid, Box } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 
 export default function Footer() {
   return (
     <>
-      <Box className="absolute inset-x-0 bottom-0 rounded-t bg-blue-950 px-10 py-6 text-blue-50">
-        <Grid container spacing={2} direction="row" justifyContent="space evenly" alignItems="center">
+      <Box className="bg-blue-950 px-10 py-6 text-blue-50">
+        <Grid container spacing={2} direction="row" justifyContent="space-evenly" alignItems="center">
           <Grid item xs={4} className="text-center font-serif text-2xl font-bold">
             Bardzo Dobry Sklep MuzycznyTM
           </Grid>
