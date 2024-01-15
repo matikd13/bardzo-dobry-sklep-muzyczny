@@ -25,7 +25,7 @@ function getRoutes() {
           element: <SearchPage />,
         },
         {
-          path: 'profile',
+          path: 'profile/:id',
           element: <ProfilePage />,
         },
       ],
