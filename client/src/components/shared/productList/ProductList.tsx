@@ -1,15 +1,4 @@
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  CardActions,
-  CardMedia,
-  Button,
-  Grid,
-  Divider,
-  createTheme,
-} from '@mui/material';
+import { Box, Card, CardContent, Typography, CardActions, CardMedia, Button, Grid, Divider } from '@mui/material';
 import Carousel from 'react-multi-carousel';
 
 export default function ProductsList() {
@@ -57,7 +46,7 @@ export default function ProductsList() {
         <Divider sx={thickDivider}></Divider>
       </Box>
       <Box sx={{ pl: 6 }}>
-        <Carousel responsive={responsive} showDots={false}>
+        <Carousel responsive={responsive} showDots={false} draggable={false}>
           <Box>
             <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
               <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
