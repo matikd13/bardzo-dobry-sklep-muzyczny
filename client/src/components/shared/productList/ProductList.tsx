@@ -63,7 +63,7 @@ export default function ProductsList() {
                     </Typography>
                   </Box>
                   <Box sx={{ p: 2 }}>
-                    <Button sx={{ p: 2 }} className="bg-sky-800" variant="contained">
+                    <Button sx={{ p: 2 }} className="bg-sky-200" variant="contained">
                       Dodaj do koszyka
                     </Button>
                   </Box>
