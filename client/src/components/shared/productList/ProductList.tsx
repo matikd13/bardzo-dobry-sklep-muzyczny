@@ -1,4 +1,15 @@
-import { Box, Card, CardContent, Typography, CardActions, CardMedia, Button, Grid, Divider } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardContent,
+  Typography,
+  CardActions,
+  CardMedia,
+  Button,
+  Grid,
+  Divider,
+  createTheme,
+} from '@mui/material';
 import Carousel from 'react-multi-carousel';
 
 export default function ProductsList() {
@@ -8,9 +19,19 @@ export default function ProductsList() {
     { title: 'Roksana Dżnigiel', price: '43,99 zł', img: 'dwd', id: '3' },
   ];
 
+  const thickDivider = {
+    borderBottom: '2px solid #123',
+  };
+
+  const titleTypoStyle = {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    maxWidth: '100%',
+  };
+
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5,
     },
@@ -29,14 +50,19 @@ export default function ProductsList() {
   };
   return (
     <>
-      <Typography variant="h1">Polecane: </Typography>
+      <Box margin={2}>
+        <Typography variant="h2" fontFamily="roboto">
+          Polecane:{' '}
+        </Typography>
+        <Divider sx={thickDivider}></Divider>
+      </Box>
       <Box sx={{ pl: 6 }}>
-        <Carousel responsive={responsive} showDots>
+        <Carousel responsive={responsive} showDots={false}>
           <Box>
             <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
               <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
               <CardContent>
-                <Typography sx={{ textAlign: 'left' }} gutterBottom variant="h5" component="div">
+                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
                   Roksana Węgiel CD
                 </Typography>
               </CardContent>
@@ -61,7 +87,7 @@ export default function ProductsList() {
             <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
               <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
               <CardContent>
-                <Typography sx={{ textAlign: 'left' }} gutterBottom variant="h5" component="div">
+                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
                   Roksana Węgiel CD
                 </Typography>
               </CardContent>
@@ -86,7 +112,7 @@ export default function ProductsList() {
             <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
               <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
               <CardContent>
-                <Typography sx={{ textAlign: 'left' }} gutterBottom variant="h5" component="div">
+                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
                   Roksana Węgiel CD
                 </Typography>
               </CardContent>
@@ -111,7 +137,7 @@ export default function ProductsList() {
             <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
               <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
               <CardContent>
-                <Typography sx={{ textAlign: 'left' }} gutterBottom variant="h5" component="div">
+                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
                   Roksana Węgiel CD
                 </Typography>
               </CardContent>
@@ -136,7 +162,7 @@ export default function ProductsList() {
             <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
               <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
               <CardContent>
-                <Typography sx={{ textAlign: 'left' }} gutterBottom variant="h5" component="div">
+                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
                   Roksana Węgiel CD
                 </Typography>
               </CardContent>
@@ -157,6 +183,9 @@ export default function ProductsList() {
             </Card>
           </Box>
         </Carousel>
+      </Box>
+      <Box margin={2}>
+        <Divider style={thickDivider}></Divider>
       </Box>
     </>
   );
