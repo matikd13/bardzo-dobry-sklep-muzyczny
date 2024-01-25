@@ -29,7 +29,7 @@ export default function UserCart() {
       {
         itemPrice: 100, 
         itemAmount: 0,
-        id: 3,
+        id: 4,
         title: "dupa",
         imgURL: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2",
       }
@@ -66,6 +66,7 @@ export default function UserCart() {
       const handleSubstracting = (id: number) => {
         //1. find the item with provided id
         const currentAmountIndex = items.findIndex((el) => el.id === id );
+        if(items[currentAmountIndex].itemAmount > 0){
         //2. change the amount
         const updatedAmount = Object.assign({}, items[currentAmountIndex]);
         updatedAmount.itemAmount -= 1;
@@ -73,7 +74,7 @@ export default function UserCart() {
         const newItems = items.slice();
         newItems[currentAmountIndex] = updatedAmount;
         setItems(newItems);
-      }
+      }}
 
      
   
