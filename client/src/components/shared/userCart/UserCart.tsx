@@ -1,5 +1,6 @@
-import { Grid, Button, Stack, TextField, listItemClasses} from '@mui/material';
-import { useState, useEffect, useContext, useReducer } from 'react';
+import { Grid, Button, Stack, TextField, Card, Typography, CardActions, CardHeader, Paper} from '@mui/material';
+
+import { useState, useEffect} from 'react';
 
 export default function UserCart() {
 
@@ -36,9 +37,7 @@ export default function UserCart() {
     ]);
 
     useEffect(() => {
-      //handleAdding(items: id);
       handlePrice();
-      //handleSubstracting(items[id]);
     }, [items]);
 
     const handlePrice = ()=>{
@@ -76,39 +75,65 @@ export default function UserCart() {
         setItems(newItems);
       }}
 
-     
-  
-  
-
+ 
   const listItems = items.map((el) => 
+          
       <li key={el.id}>
-        <Stack direction="row" spacing={2}>
-      <p> {el.title} </p>
-      <p> {el.itemPrice} zł </p>
-      <Button className="bg-sky-500" variant="contained" style={{maxWidth: '30px', maxHeight: '30px'}} onClick={() => handleAdding(el.id)} >+</Button>
-      <p> {el.itemAmount} </p>
-      <Button className="bg-sky-500" variant="contained" style={{maxWidth: '30px', maxHeight: '30px'}} onClick={() => handleSubstracting(el.id)} >-</Button>
-      <img src={el.imgURL} width={60} height={60} />
-      </Stack>
+         <Paper sx={{ width: 600, m: 4, borderRadius: 10 }} elevation={2} variant="outlined">
+          <Grid padding={2} container>
+            <Grid item xs={12} sm container borderRadius="50%">
+             <img src={el.imgURL} width={150} height={60}  />
+            </Grid>
+          <Grid item xs={12} sm container justifyContent="center" alignItems="center">
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography variant='h5' sx={{ fontWeight: 'bold', alignItems: "center", justifyContent: "center" }} >{el.title}</Typography>
+              </Grid>
+            <Grid item direction="row" justifyContent="center" alignItems="center">
+              <Button className="bg-sky-500" variant="contained" style={{maxWidth: '30px', maxHeight: '30px'}} onClick={() => handleAdding(el.id)} >+</Button>
+              <Typography sx={{ fontWeight: 'bold'}}> {el.itemAmount} </Typography>
+              <Button className="bg-sky-500" variant="contained" style={{maxWidth: '30px', maxHeight: '30px'}} onClick={() => handleSubstracting(el.id)} >-</Button>
+           </Grid>
+            </Grid>
+            </Grid>
+            <Grid item>
+              <Typography variant="h6" component="div">{el.itemPrice} zł</Typography>
+            </Grid>
+            </Grid>
+
+          </Paper>
       </li>
+      
   ); 
     
 
     return (
       <>
-        <Grid container direction="row" my={4} justifyContent="center" alignItems="flex-start" spacing={2} >
-            <Stack spacing={2} alignItems="center">
-              <Stack direction="row" spacing={2}>
+      <Grid container spacing={2}>
+        <Grid item xs={8}>
+            <Stack spacing={6} justifyContent="center" alignItems="center" direction="row">
+               <div>
                <ul>{listItems}</ul>
-              </Stack>
-                <div className='total'>
-                  <span> Podsumowanie Twojego koszyka</span>
-                  <span> = {cartTotal} zł</span>
-                </div>
-                <Button className="bg-sky-500" variant="contained" style={{maxWidth: '300px', maxHeight: '30px'}}>Przejdź do płatności</Button>
-            </Stack>
+               </div>
+               </Stack>
+               </Grid>
+               <Grid item xs={4} padding={2}>
+               <Stack spacing={10} justifyContent="left" alignItems="left" direction="row" padding={4}>
+                <Paper sx={{ width: 300, height: 180, m: 4, borderRadius: 10, justifyContent: "center", alignItems: "center"}} elevation={2} variant="outlined">
+                  <Grid item container direction="column" padding={4}>
+                    <Typography sx={{ fontWeight: 'bold'}}> Podsumowanie</Typography>
+                    <Typography sx={{ fontWeight: 'light'}}>Wartość produktów = {cartTotal} zł</Typography>
+                    <Typography sx={{ fontWeight: 'light'}}>Dostawa = ??</Typography>
+                    <Typography sx={{ fontWeight: 'bold'}}> Suma całkowita = {cartTotal}</Typography>
+                    <Button className="bg-sky-500" variant="contained" style={{maxWidth: '300px', maxHeight: '30px'}}>Przejdź do płatności</Button>
+                  </Grid>
+                </Paper>
+                </Stack>
+                
+                </Grid>
+                </Grid>
         
-        </Grid>
+        
         </>
     );
   
