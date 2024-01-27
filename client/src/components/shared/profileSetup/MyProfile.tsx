@@ -20,9 +20,9 @@ export default function MyProfile() {
 
   //TODO1: i tu wyobrażam sobie, ze jak ktos zaklada konto, tam wypelnia dane, 
   //to potem po zalogowaniu ma juz je w polach, trzeba je pobrac z bazy danych, jak? 
-  //i czy trzeba tu funkcje set.. (changeField nizej) ktora bedzie to podmieniac?
+ 
 
-  //TODO2: id jest, trzeba podpiac baze i tak zrobic zeby to dzialalo z uzytkownikami xd
+  //TODO2: id jest, trzeba podpiac baze i tak zrobic zeby to dzialalo z uzytkownikami 
 
   
 
@@ -34,7 +34,6 @@ export default function MyProfile() {
     const routeToCart = () => {
       navigate('/cart/:id');
     } 
-
    const listUser = user.map((el) =>
       <li key={el.id}>
           <Paper sx={{ width: 600, height: 600, m: 4, borderRadius: 10}} elevation={2} variant="outlined">
