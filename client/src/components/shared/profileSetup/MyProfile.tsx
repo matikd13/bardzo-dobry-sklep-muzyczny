@@ -1,17 +1,22 @@
-import { Grid, Button, TextField, Stack, FormControl} from '@mui/material';
+import { Grid, Button, TextField, Stack, FormControl, Typography, Paper} from '@mui/material';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 
 export default function MyProfile() {
 
-  const [name, setName] = useState('nata');
-  const [surname, setSurname] = useState('');
-  const [number, setNumber] = useState('');
-  const [email, setEmail] = useState('');
-  const [street, setStreet] = useState('');
-  const [house_number, setHouse_number] = useState('');
-  const [zip_code, setZip_code] = useState('');
-  const [city, setCity] = useState('');
+  const [user, setUser] = useState([
+    {
+    id: 1,
+    name: "Nata",
+    surname: "Dupa",
+    number: 123456789,
+    email: "buziaczek@02.pl",
+    street: "Budryka" ,
+    house_number: 2,
+    zip_code: "38-543",
+    city: "Craków"
+    }
+  ])
 
   //TODO1: i tu wyobrażam sobie, ze jak ktos zaklada konto, tam wypelnia dane, 
   //to potem po zalogowaniu ma juz je w polach, trzeba je pobrac z bazy danych, jak? 
@@ -19,104 +24,129 @@ export default function MyProfile() {
 
   //TODO2: id jest, trzeba podpiac baze i tak zrobic zeby to dzialalo z uzytkownikami xd
 
-  const changeField = () => {
-    setName('dupa')
-  }
+  
 
   const { id } = useParams();
 
   //docelowo rutują do odpowiednich stron
   const navigate= useNavigate();
 
-    const routeToHistory = () => {
-      navigate('/');
-      console.log('dupa')
-    }
-
     const routeToCart = () => {
-      navigate('/');
+      navigate('/cart/:id');
     } 
 
-    const routeToFavorites = () => {
-      navigate('/');
-    } 
-
-    return (
-      <>
-      <div>
-            <Grid container direction="row" my={4} justifyContent="center" alignItems="flex-start" >
-           
-           <form noValidate>
-            <Stack
-            component="form"
-            sx={{
-              '& .MuiTextField-root': { m: 1, width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
-              >
-                <div>
-                <h3>Twoje dane (na ten moment id strony xd): { id }</h3> 
-                  <TextField
+   const listUser = user.map((el) =>
+      <li key={el.id}>
+          <Paper sx={{ width: 600, height: 600, m: 4, borderRadius: 10}} elevation={2} variant="outlined">
+            <Grid padding={2} container xs={6} direction="column">
+              <form noValidate>
+              <Grid item sm container xs={6} direction="column"  >
+                 <Typography mb={2} variant='h5' sx={{ fontWeight: "bold"}}>Twoje dane:</Typography> 
+                    <Grid item marginBottom={2} >
+                    <TextField
                     required
                     id="outlined-required"
                     label="Imię"
-                    defaultValue={name}
-                  /> 
-                  <TextField
+                    defaultValue={el.name}
+                    />
+                    </Grid>
+                    <Grid item marginBottom={2}>
+                    <TextField
                     required
                     id="outlined-required"
                     label="Nazwisko"
-                  />
-                  <TextField
+                    defaultValue={el.surname}
+                    />
+                    </Grid>
+                    <Grid item marginBottom={2}>
+                    <TextField
                     required
                     id="outlined-required"
                     type="number"
                     label="Numer telefonu"
+                    defaultValue={el.number}
                     />
+                    </Grid>
+                    <Grid item marginBottom={2}>
                     <TextField
                     required
                     id="outlined-required"
                     type="email"
                     label="E-mail"
+                    defaultValue={el.email}
                     />
-                  </div>
-                  <div>
-                    <h3>Adres wysyłki:</h3>
+                    </Grid>
+                  </Grid>
+                  <Typography m={2} variant='h5' sx={{ fontWeight: "bold"}}>Adres wysyłki:</Typography>
+                  <Grid item sm container xs={6} direction="column"  >
                     <TextField
                     fullWidth
                     required
                     id="outlined-required"
                     label="Ulica"
+                    defaultValue={el.street}
                     />
+                    <Grid item marginBottom={2}>
                     <TextField
                     required
                     id="outlined-required"
                     type="number"
                     label="Nr mieszkania/domu"
+                    defaultValue={el.house_number}
                     />
+                    </Grid>
+                    <Grid item marginBottom={2}>
                     <TextField
                     required
                     id="outlined-required"
                     label="Kod pocztowy"
+                    defaultValue={el.zip_code}
                     />
+                    </Grid>
+                    <Grid item marginBottom={2}>
                     <TextField
                     required
                     id="outlined-required"
                     label="Miasto"
+                    defaultValue={el.city}
                     />
-                    </div>
-                    {/* tu mnie pojebalo z tym edit xd<Button type="submit" variant="contained" color="error">Edit</Button> */}
-                  </Stack>
-                </form>
-        
+                    </Grid>
+                    </Grid>
+                    
+                    </form>
+              
             </Grid>
-            <Grid container direction="row" justifyContent="center" alignItems="flex-end">
-              <Grid item mx={4}><Button onClick={routeToHistory} className="bg-sky-500" variant="contained">Historia zamówień</Button></Grid>
-              <Grid item mx={4}><Button onClick={routeToCart} className="bg-sky-500" variant="contained">Koszyk</Button></Grid>
-              <Grid item mx={4}><Button onClick={routeToFavorites} className="bg-sky-500" variant="contained">ulubione produkty</Button></Grid>
-            </Grid>
-      </div>
+          </Paper>
+      </li>
+   
+   );
+
+    return (
+      <>
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Stack spacing={6} justifyContent="center" alignItems="center" padding={4}>
+              <div>
+                <ul>{listUser}</ul>
+              </div>
+          <Grid item mx={4}><Button onClick={routeToCart}  className="bg-sky-500" variant="contained">Przejdź do koszyka</Button></Grid>
+          </Stack>
+          </Grid>
+        </Grid>
+            
+           
+                
+                 
+               
+                
+              
+            
+           
+              
+             
+           
+            
+     
       </>
     );
   }
