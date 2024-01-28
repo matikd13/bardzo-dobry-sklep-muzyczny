@@ -36,8 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'corsheaders',
+    'django_extensions',
 
     'muzyczny.accounts',
+    'muzyczny.products',
+    'muzyczny.orders',
 ]
 
 MIDDLEWARE = [
