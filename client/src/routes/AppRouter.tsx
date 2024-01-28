@@ -15,7 +15,7 @@ function getRoutes() {
   return [
     {
       path: '',
-      element: <Layout />, //TODO: make page layout
+      element: <Layout />,
       children: [
         {
           path: '',

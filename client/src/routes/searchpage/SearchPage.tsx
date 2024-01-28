@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import SearchBar from '@components/shared/searchBar/SearchBar';
 import Product from '@components/shared/searchedProduct/Product';
@@ -55,7 +55,7 @@ export default function SearchPage() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <div style={{ maxWidth: '900px', margin: '40px auto 20px auto' }}>
         <TextField
           label="Wyszukaj"
@@ -87,6 +87,6 @@ export default function SearchPage() {
           ))}
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 }

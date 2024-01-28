@@ -1,5 +1,4 @@
-// SearchBar.tsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TextField, IconButton, Box } from '@mui/material';
 
 interface SearchBarProps {
@@ -20,13 +19,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
   };
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      width="900px"
-      margin="0 auto"
-    >
+    <Box display="flex" justifyContent="center" alignItems="center" width="900px" margin="0 auto">
       <TextField
         label="Wprowadź szukaną frazę..."
         variant="outlined"

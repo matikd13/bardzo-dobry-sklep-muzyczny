@@ -17,7 +17,6 @@ function LoginButton() {
 
   return (
     <Button
-      // eslint-disable-next-line @typescript-eslint/no-misused-promises
       onClick={async () => {
         await loginWithRedirect();
       }}

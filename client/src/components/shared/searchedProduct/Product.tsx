@@ -1,15 +1,14 @@
-import React from 'react';
 import { Card, CardContent, Typography, Button, CardMedia, Grid, Box } from '@mui/material';
 
-interface ProductProps {
+type ProductProps = {
   id: number;
   title: string;
   price: number;
   description: string;
   image: string;
-}
+};
 
-const Product: React.FC<ProductProps> = ({ id, title, price, description, image }) => {
+export default function Product({ id, title, price, description, image }: ProductProps) {
   return (
     <Card style={{ marginBottom: '16px', borderRadius: '12px', height: '200px', position: 'relative' }}>
       <Grid container spacing={2}>
@@ -48,6 +47,4 @@ const Product: React.FC<ProductProps> = ({ id, title, price, description, image 
       </Grid>
     </Card>
   );
-};
-
-export default Product;
+}
