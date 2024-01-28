@@ -3,8 +3,7 @@ import Layout from './layouts/Layout';
 import HomePage from './homepage/HomePage';
 import SearchPage from './searchpage/SearchPage';
 import ProfilePage from './profilepage/ProfilePage';
-//import UserCartPage from './usercartpage/UserCartPage';
-
+import UserCartPage from './usercartpage/UserCartPage';
 
 export type AppRouteType = {
   path: string;
@@ -32,8 +31,8 @@ function getRoutes() {
         },
         {
           path: 'cart/:id',
-          //element: <UserCartPage />
-        }
+          element: <UserCartPage />,
+        },
       ],
     },
     {
