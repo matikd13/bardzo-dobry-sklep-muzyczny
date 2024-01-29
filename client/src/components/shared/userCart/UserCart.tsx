@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { gql } from '@apollo/client';
 import { useCartContext } from '@utils/CartContext';
 import { useMakeOrderMutation } from '@generated/graphql';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useUserContext } from '@utils/auth/UserContext';
 
 gql`
   mutation MakeOrder($orderItems: [OrderItemInput!]!) {
@@ -137,7 +139,8 @@ export default function UserCart() {
       </Paper>
     </li>
   ));
-
+  const { userId } = useUserContext();
+  const { loginWithRedirect } = useAuth0();
   return (
     <>
       <Grid container spacing={2}>
@@ -164,7 +167,10 @@ export default function UserCart() {
                   className="mb-2 bg-sky-500"
                   variant="contained"
                   style={{ maxWidth: '300px', maxHeight: '30px' }}
-                  onClick={buyItems}
+                  onClick={() => {
+                    if (!userId) loginWithRedirect();
+                    else buyItems();
+                  }}
                 >
                   Przejdź do płatności
                 </Button>

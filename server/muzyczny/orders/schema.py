@@ -31,7 +31,7 @@ class Mutation:
         sum = 0
         for item in order_items:
             item = OrderItem.objects.create(product_id=item.prod_id, amount=item.quantity, order=order)
-            sum += item.product.price
+            sum += item.product.price * item.amount
 
         stripe.api_key = muzyczny.settings.STRIPE_API_KEY
 
