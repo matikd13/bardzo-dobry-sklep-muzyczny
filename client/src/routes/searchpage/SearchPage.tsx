@@ -1,24 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import SearchBar from '@components/shared/searchBar/SearchBar';
-import Product from '@components/shared/searchedProduct/Product';
-import Footer from '@routes/layouts/Footer/Footer';
 import { TextField, InputAdornment, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
+import Fuse from 'fuse.js';
+import { gql } from '@apollo/client';
+import SerchedProduct from '@components/shared/searchedProduct/SerchedProduct';
+import { SearchPage_ProductFragment, useSearchPage_ProductsQuery } from '@generated/graphql';
 
-interface ProductData {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-}
+gql`
+  query SearchPage_Products {
+    products {
+      ...ProductsList_Product
+    }
+  }
+
+  fragment SearchPage_Product on Product {
+    id
+    name
+    author
+    quantity
+    image
+    price
+  }
+`;
+
+const FUSE_PRODUCTS_OPTIONS = {
+  includeScore: true,
+  threshold: 0.4,
+  keys: ['name', 'author'],
+};
 
 export default function SearchPage() {
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [searchResults, setSearchResults] = useState<ProductData[]>([]);
   const navigate = useNavigate();
   const location = useLocation();
+  const { data } = useSearchPage_ProductsQuery();
+
+  const products = data?.products ?? [];
+
+  const [searchResults, setSearchResults] = useState<SearchPage_ProductFragment[]>(products);
+
+  const handleSearch = (term: string) => {
+    const fuseProducts = new Fuse(products, FUSE_PRODUCTS_OPTIONS);
+
+    const resultProducts = fuseProducts.search(term);
+
+    setSearchResults(term === '' ? products : resultProducts.map((e) => e.item));
+    navigate(`/search?term=${term}`);
+  };
 
   useEffect(() => {
     const termFromUrl = new URLSearchParams(location.search).get('term');
@@ -28,34 +57,12 @@ export default function SearchPage() {
     }
   }, [location.search]);
 
-  const handleSearch = (term: string) => {
-    const xfakeSearchResults: ProductData[] = [
-      { id: 1, title: 'Roxie Kręgiel płyta', price: 29.99, description: 'o boze roksana', image: '/x/roxie.jpg' },
-    ];
-
-    if (term === 'roxie') {
-      setSearchResults(xfakeSearchResults);
-      navigate(`/search?term=${term}`);
-    } else {
-      const fakeSearchResults: ProductData[] = [
-        { id: 1, title: 'Produkt 1', price: 29.99, description: 'Opis produktu 1', image: '/x/chipichipi.jpg' },
-        { id: 2, title: 'Produkt 2', price: 49.99, description: 'Opis produktu 2', image: '/x/chipichipi.jpg' },
-        { id: 3, title: 'Produkt 3', price: 39.99, description: 'Opis produktu 3', image: '/x/chipichipi.jpg' },
-        { id: 4, title: 'Produkt 4', price: 59.99, description: 'Opis produktu 4', image: '/x/chipichipi.jpg' },
-        { id: 5, title: 'Produkt 5', price: 19.99, description: 'Opis produktu 5', image: '/x/chipichipi.jpg' },
-      ];
-
-      setSearchResults(fakeSearchResults);
-      navigate(`/search?term=${term}`);
-    }
-  };
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
   return (
-    <React.Fragment>
+    <>
       <div style={{ maxWidth: '900px', margin: '40px auto 20px auto' }}>
         <TextField
           label="Wyszukaj"
@@ -63,9 +70,7 @@ export default function SearchPage() {
           value={searchTerm}
           onChange={handleChange}
           onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              handleSearch(searchTerm);
-            }
+            if (e.key === 'Enter') handleSearch(searchTerm);
           }}
           fullWidth
           style={{ marginBottom: '20px' }}
@@ -83,10 +88,10 @@ export default function SearchPage() {
           <h2>Wyniki wyszukiwania:</h2>
           <div style={{ marginBottom: '15px' }}></div>
           {searchResults.map((result) => (
-            <Product key={result.id} {...result} />
+            <SerchedProduct key={result.id} product={result} />
           ))}
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 }

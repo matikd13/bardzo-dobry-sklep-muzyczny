@@ -1,37 +1,45 @@
-import React from 'react';
+import { SearchPage_ProductFragment } from '@generated/graphql';
 import { Card, CardContent, Typography, Button, CardMedia, Grid, Box } from '@mui/material';
+import { useCartContext } from '@utils/CartContext';
 
-interface ProductProps {
+type ProductProps = {
   id: number;
   title: string;
   price: number;
   description: string;
   image: string;
-}
+};
 
-const Product: React.FC<ProductProps> = ({ id, title, price, description, image }) => {
-  return (
+export default function SerchedProduct({
+  product,
+  quantity,
+}: {
+  product?: SearchPage_ProductFragment;
+  quantity?: number;
+}) {
+  const { addToCart } = useCartContext();
+
+  return !product ? (
+    <></>
+  ) : (
     <Card style={{ marginBottom: '16px', borderRadius: '12px', height: '200px', position: 'relative' }}>
       <Grid container spacing={2}>
         <Grid item xs={4}>
           <CardMedia
             component="img"
-            alt={title}
+            alt={product.name}
             height="100"
-            image={image}
+            image={product.image ?? ''}
             style={{ objectPosition: 'left bottom', objectFit: 'cover', borderTopLeftRadius: '12px' }}
           />
         </Grid>
         <Grid item xs={8}>
           <CardContent style={{ paddingBottom: 0 }}>
             <Typography variant="h4" component="div">
-              {title}
+              {product.author} - {product.name}
             </Typography>
             <Typography variant="subtitle1" color="text.secondary">
-              Cena: {price} zł
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {description}
+              Cena: {product.price} zł
             </Typography>
           </CardContent>
           <Box
@@ -40,14 +48,16 @@ const Product: React.FC<ProductProps> = ({ id, title, price, description, image 
             alignItems="flex-end"
             style={{ paddingRight: '8px', paddingBottom: '8px', position: 'absolute', bottom: 0, right: 0 }}
           >
-            <Button variant="contained" color="primary">
-              Dodaj do koszyka
-            </Button>
+            {quantity ? (
+              quantity
+            ) : (
+              <Button variant="contained" onClick={() => addToCart(product)} color="primary">
+                Dodaj do koszyka
+              </Button>
+            )}
           </Box>
         </Grid>
       </Grid>
     </Card>
   );
-};
-
-export default Product;
+}

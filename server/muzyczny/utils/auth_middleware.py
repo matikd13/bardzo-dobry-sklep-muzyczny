@@ -13,12 +13,20 @@ class AuthMiddleware:
 
         auth_header = request.META.get('HTTP_AUTHORIZATION')
 
+        print(auth_header)
+
         if auth_header:
             response = requests.get(f"{settings.AUTH0_DOMAIN}/userinfo", headers={
                 'Authorization': auth_header,
             })
             if response.status_code == 200:
+                print(response.json())
                 user, _ = User.objects.get_or_create(email=response.json()["email"])
+                if user.first_login:
+                    user.first_name = response.json()["given_name"]
+                    user.last_name = response.json()["family_name"]
+                    user.first_login = False
+                    user.save()
                 login(request, user)
 
         response = self.get_response(request)

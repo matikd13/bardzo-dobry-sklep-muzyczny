@@ -10,6 +10,7 @@ class Product:
     name: auto
     author: auto
     release_date: auto
+    image: auto
     quantity: auto
     price: auto
     discontinued: auto
