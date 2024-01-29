@@ -9,6 +9,7 @@ class Product(TimeStampedModel):
     release_date = models.DateField(null=True, blank=True)
     quantity = models.PositiveIntegerField()
     price = models.DecimalField(decimal_places=2, max_digits=10)
+    image = models.CharField(null=True, blank=True)
 
     discontinued = models.BooleanField(default=False)
 

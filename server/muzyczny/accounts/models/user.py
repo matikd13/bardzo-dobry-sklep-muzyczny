@@ -33,4 +33,14 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
     username = None
 
+    first_login = models.BooleanField(default=True)
+
     email = models.EmailField(max_length=255, unique=True)
+    first_name = models.CharField(max_length=60)
+    last_name = models.CharField(max_length=60)
+    phone_number = models.CharField(max_length=16, default='')
+
+    street = models.CharField(max_length=60, default='')
+    street_number = models.CharField(max_length=60, default='')
+    postal_code = models.CharField(max_length=60, default='')
+    city = models.CharField(max_length=60, default='')

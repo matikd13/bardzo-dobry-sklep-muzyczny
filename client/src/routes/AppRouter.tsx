@@ -1,9 +1,12 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
 import Layout from './layouts/Layout';
 import HomePage from './homepage/HomePage';
 import SearchPage from './searchpage/SearchPage';
 import ProfilePage from './profilepage/ProfilePage';
 import UserCartPage from './usercartpage/UserCartPage';
+import OrderPage from './OrderPage';
+import { useUserContext } from '@utils/auth/UserContext';
 
 export type AppRouteType = {
   path: string;
@@ -26,12 +29,16 @@ function getRoutes() {
           element: <SearchPage />,
         },
         {
-          path: 'profile/:id',
+          path: 'profile',
           element: <ProfilePage />,
         },
         {
-          path: 'cart/:id',
+          path: 'cart',
           element: <UserCartPage />,
+        },
+        {
+          path: 'order/:id',
+          element: <OrderPage />,
         },
       ],
     },
@@ -44,6 +51,7 @@ function getRoutes() {
 
 export default function AppRouter() {
   const router = createBrowserRouter(getRoutes());
+  const { loading } = useUserContext();
 
-  return <RouterProvider router={router} />;
+  return loading ? <CircularProgress /> : <RouterProvider router={router} />;
 }

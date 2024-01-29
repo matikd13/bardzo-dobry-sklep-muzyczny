@@ -20,6 +20,8 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default=None)
 DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', cast=Csv(), default='')
 
+STRIPE_API_KEY = config('STRIPE_API_KEY')
+
 CORS_ALLOWED_ORIGINS = [x for x in config('DJANGO_CORS_ALLOWED_ORIGINS').split(',') if x != '']
 
 if ENVIRONMENT == 'local':

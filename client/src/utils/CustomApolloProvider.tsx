@@ -7,11 +7,13 @@ const GQL_URI = import.meta.env.VITE_GQL_URI;
 
 export default function CustomApolloProvider({ children }: PropsWithChildren) {
   const { getAccessTokenSilently } = useAuth0();
-  const [token, setToken] = useState('');
+  const [token, setToken] = useState(localStorage.getItem('token') ?? '');
 
   useEffect(() => {
     async function getToken() {
-      setToken(await getAccessTokenSilently());
+      const token = await getAccessTokenSilently();
+      setToken(token);
+      localStorage.setItem('token', token);
     }
 
     void getToken();
@@ -36,7 +38,8 @@ export default function CustomApolloProvider({ children }: PropsWithChildren) {
       link: authLink.concat(httpLink),
       cache: new InMemoryCache(),
     });
-  }, [authLink, httpLink]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authLink, httpLink, token]);
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 }

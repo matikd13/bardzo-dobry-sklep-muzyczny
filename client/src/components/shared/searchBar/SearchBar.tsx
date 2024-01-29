@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { TextField, IconButton, Box } from '@mui/material';
 
-interface SearchBarProps {
+type SearchBarProps = {
   onSearch: (searchTerm: string) => void;
-}
+};
 
 export default function SearchBar({ onSearch }: SearchBarProps) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,9 +13,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
   };
 
   const handleSearch = () => {
-    if (onSearch) {
-      onSearch(searchTerm);
-    }
+    if (onSearch) onSearch(searchTerm);
   };
 
   return (

@@ -1,22 +1,23 @@
-import { Box, Card, CardContent, Typography, CardActions, CardMedia, Button, Grid, Divider } from '@mui/material';
+import { Box, Typography, Divider } from '@mui/material';
 import Carousel from 'react-multi-carousel';
+import { gql } from '@apollo/client';
+import Product from './Product';
+import { ProductsList_ProductFragment } from '@generated/graphql';
 
-export default function ProductsList() {
-  const productList = [
-    { title: 'Roksana Węgiel', price: '49,99 zł', img: 'dwd', id: '1' },
-    { title: 'Roksana Kręgiel', price: '42,99 zł', img: 'dwd', id: '2' },
-    { title: 'Roksana Dżnigiel', price: '43,99 zł', img: 'dwd', id: '3' },
-  ];
+gql`
+  fragment ProductsList_Product on Product {
+    id
+    name
+    author
+    quantity
+    image
+    price
+  }
+`;
 
+export default function ProductsList({ products }: { products: ProductsList_ProductFragment[] }) {
   const thickDivider = {
     borderBottom: '2px solid #123',
-  };
-
-  const titleTypoStyle = {
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    maxWidth: '100%',
   };
 
   const responsive = {
@@ -41,136 +42,15 @@ export default function ProductsList() {
     <>
       <Box margin={2}>
         <Typography variant="h2" fontFamily="roboto">
-          Polecane:{' '}
+          Polecane:
         </Typography>
         <Divider sx={thickDivider}></Divider>
       </Box>
       <Box sx={{ pl: 6 }}>
         <Carousel responsive={responsive} showDots={false} draggable={false}>
-          <Box>
-            <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
-              <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
-              <CardContent>
-                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
-                  Roksana Węgiel CD
-                </Typography>
-              </CardContent>
-              <CardActions sx={{ height: 60 }}>
-                <Grid alignItems="center" container spacing={2} justifyContent="space-between">
-                  <Box sx={{ p: 2 }}>
-                    <Typography sx={{ p: 2 }} variant="h6">
-                      50 zł
-                    </Typography>
-                  </Box>
-                  <Box sx={{ p: 2 }}>
-                    <Button sx={{ p: 2 }} className="bg-sky-200" variant="contained">
-                      Dodaj do koszyka
-                    </Button>
-                  </Box>
-                </Grid>
-              </CardActions>
-            </Card>
-          </Box>
-
-          <Box>
-            <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
-              <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
-              <CardContent>
-                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
-                  Roksana Węgiel CD
-                </Typography>
-              </CardContent>
-              <CardActions sx={{ height: 60 }}>
-                <Grid alignItems="center" container spacing={2} justifyContent="space-between">
-                  <Box sx={{ p: 2 }}>
-                    <Typography sx={{ p: 2 }} variant="h6">
-                      50 zł
-                    </Typography>
-                  </Box>
-                  <Box sx={{ p: 2 }}>
-                    <Button sx={{ p: 2 }} className="bg-sky-800" variant="contained">
-                      Dodaj do koszyka
-                    </Button>
-                  </Box>
-                </Grid>
-              </CardActions>
-            </Card>
-          </Box>
-
-          <Box>
-            <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
-              <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
-              <CardContent>
-                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
-                  Roksana Węgiel CD
-                </Typography>
-              </CardContent>
-              <CardActions sx={{ height: 60 }}>
-                <Grid alignItems="center" container spacing={2} justifyContent="space-between">
-                  <Box sx={{ p: 2 }}>
-                    <Typography sx={{ p: 2 }} variant="h6">
-                      50 zł
-                    </Typography>
-                  </Box>
-                  <Box sx={{ p: 2 }}>
-                    <Button sx={{ p: 2 }} className="bg-sky-800" variant="contained">
-                      Dodaj do koszyka
-                    </Button>
-                  </Box>
-                </Grid>
-              </CardActions>
-            </Card>
-          </Box>
-
-          <Box>
-            <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
-              <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
-              <CardContent>
-                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
-                  Roksana Węgiel CD
-                </Typography>
-              </CardContent>
-              <CardActions sx={{ height: 60 }}>
-                <Grid alignItems="center" container spacing={2} justifyContent="space-between">
-                  <Box sx={{ p: 2 }}>
-                    <Typography sx={{ p: 2 }} variant="h6">
-                      50 zł
-                    </Typography>
-                  </Box>
-                  <Box sx={{ p: 2 }}>
-                    <Button sx={{ p: 2 }} className="bg-sky-800" variant="contained">
-                      Dodaj do koszyka
-                    </Button>
-                  </Box>
-                </Grid>
-              </CardActions>
-            </Card>
-          </Box>
-
-          <Box>
-            <Card sx={{ maxWidth: 400 }} style={{ backgroundColor: 'white' }}>
-              <CardMedia sx={{ height: 300 }} image="src/static/image/hold-up-let-him-cook.png" title="bajojajo" />
-              <CardContent>
-                <Typography sx={titleTypoStyle} gutterBottom variant="h5" component="div">
-                  Roksana Węgiel CD
-                </Typography>
-              </CardContent>
-              <CardActions sx={{ height: 60 }}>
-                <Grid alignItems="center" container spacing={2} justifyContent="space-between">
-                  <Box sx={{ p: 2 }}>
-                    <Typography sx={{ p: 2 }} variant="h6">
-                      50 zł
-                    </Typography>
-                  </Box>
-                  <Box sx={{ p: 2 }}>
-                    <Button sx={{ p: 2 }} className="bg-sky-800" variant="contained">
-                      Dodaj do koszyka
-                    </Button>
-                  </Box>
-                </Grid>
-              </CardActions>
-            </Card>
-          </Box>
+          {products.map((prod) => (
+            <Product key={prod.id} product={prod} />
+          ))}
         </Carousel>
       </Box>
       <Box margin={2}>
